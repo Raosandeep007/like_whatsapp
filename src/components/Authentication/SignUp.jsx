@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const [showpassword, setShowpassword] = useState(false);
   const [showconfirmpassword, setShowconfirmpassword] = useState(false);
@@ -18,6 +19,7 @@ const SignUp = () => {
   const [pic, setPic] = useState();
   const [loading, setLoading] = useState(false);
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleEntries = (e) => {
     const { name } = e.target;
@@ -99,6 +101,7 @@ const SignUp = () => {
       axios
         .post("http://127.0.0.1:5000/users/register", newData)
         .then((res) => {
+          localStorage.setItem("userInfo", JSON.stringify(res.data));
           toast({
             title: "Successfully Registered!",
             description: res.data.message,
@@ -108,6 +111,7 @@ const SignUp = () => {
             position: "top",
           });
           setLoading(false);
+          navigate("/chat");
         });
     } catch (error) {
       toast({

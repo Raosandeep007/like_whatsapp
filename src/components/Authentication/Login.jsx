@@ -11,12 +11,14 @@ import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showpassword, setShowpassword] = useState(false);
   const [newData, setnewData] = useState({});
   const [loading, setLoading] = useState(false);
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleEntries = (e) => {
     const { name } = e.target;
@@ -37,6 +39,7 @@ const Login = () => {
     } else {
       try {
         axios.post("http://127.0.0.1:5000/users/login", newData).then((res) => {
+          localStorage.setItem("userInfo", JSON.stringify(res.data));
           toast({
             title: "Login Successful",
             description: res.data.message,
@@ -46,6 +49,7 @@ const Login = () => {
             position: "top",
           });
           setLoading(false);
+          navigate("/chat");
         });
       } catch (error) {
         toast({
@@ -103,7 +107,7 @@ const Login = () => {
         onClick={submitHandler}
         isLoading={loading}
       >
-        Sign Up
+        Login
       </Button>
       <Button
         variant="solid"

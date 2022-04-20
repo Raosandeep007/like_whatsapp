@@ -11,7 +11,7 @@ const Homepage = () => {
         justifyContent="center"
         p={3}
         bg={"white"}
-        W="100%"
+        width={"100%"}
         m="40px 0 15px 0"
         borderRadius="lg"
         borderWidth="1px"
@@ -20,14 +20,7 @@ const Homepage = () => {
           Welcome to Like-WhatsApp
         </Text>
       </Box>
-      <Box
-        bg="white"
-        w="100%"
-        p3={4}
-        borderRadius="lg"
-        borderWidth="1px"
-        color="black"
-      >
+      <Box bg="white" width={"100%"} p3={4} borderRadius="lg" borderWidth="1px" color="black">
         <Tabs isFitted variant="enclosed">
           <TabList mb="1em">
             <Tab>Login</Tab>
