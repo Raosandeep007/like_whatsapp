@@ -61,7 +61,7 @@ const Sidebar = () => {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
-        }
+        },
       );
       setLoading(false);
       setSearchResult(data);
@@ -103,7 +103,7 @@ const Sidebar = () => {
                 style={{ width: "20px", height: "20px", margin: 1 }}
               />
             </MenuButton>
-            {/* <MenuList></MenuList> */}
+            <MenuList></MenuList>
           </Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<AiFillCaretDown />}>
